@@ -7,6 +7,10 @@ pipeline {
         }
     }
 
+    environment {
+        ANSIBLE_HOST_KEY_CHECKING = 'False'
+    }
+
     stages {
         stage('ansible') {
             steps {
