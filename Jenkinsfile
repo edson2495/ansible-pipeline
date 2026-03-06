@@ -9,6 +9,7 @@ pipeline {
 
     environment {
         ANSIBLE_HOST_KEY_CHECKING = 'False'
+        JBOSS_CREDENTIALS = credentials('jboss-credentials')
     }
 
     stages {
@@ -17,6 +18,7 @@ pipeline {
 
                 //sh 'whoami'
                 sh 'ansible --version'
+                sh 'env | sort'
 
                 sshagent(credentials: ['amazon-linux-private-key']){
 
@@ -40,11 +42,11 @@ pipeline {
 
                     // sh 'ansible server1 -i hosts -m ansible.builtin.yum -a "name=nmap state=latest" -u ec2-user --become'
 
-                    sh 'ansible-inventory -i hosts --graph'
+                    // sh 'ansible-inventory -i hosts --graph'
 
-                    sh 'ansible-playbook -i hosts playbooks/server1_config.yml'
+                    // sh 'ansible-playbook -i hosts playbooks/server1_config.yml'
 
-                    // sh 'ansible-playbook -i hosts playbooks/server1_jboss.yml'
+                    sh 'ansible-playbook -i hosts playbooks/server1_jboss.yml'
 
                 }
                 
