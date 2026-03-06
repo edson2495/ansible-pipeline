@@ -28,11 +28,11 @@ pipeline {
 
                     // sh 'ansible all -i hosts -m ping -u ec2-user'
 
-                    sh 'ansible server1 -i hosts -m command -a "cat /etc/os-release" -u ec2-user'
+                    //sh 'ansible server1 -i hosts -m command -a "cat /etc/os-release" -u ec2-user'
                     // sh 'ansible server1 -i hosts -a "cat /etc/os-release" -u ec2-user'
 
                     // sudo yum install tree -y
-                    // sh 'ansible server1 -i hosts -m yum -a "name=tree state=latest" -u ec2-user'
+                    sh 'ansible server1 -i hosts -m yum -a "name=tree state=latest" -u ec2-user'
                     // sh 'ansible server1 -i hosts -m yum -a "name=tree state=latest" -u ec2-user --become'
 
                     // sudo yum remove tree -y
